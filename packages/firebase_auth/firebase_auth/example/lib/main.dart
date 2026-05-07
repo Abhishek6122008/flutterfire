@@ -27,7 +27,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // We're using the manual installation on non-web platforms since Google sign in plugin doesn't yet support Dart initialization.
   // See related issue: https://github.com/flutter/flutter/issues/96391
-
   // We store the app and auth to make testing with a named instance easier.
   app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -40,8 +39,7 @@ Future<void> main() async {
 
   if (!kIsWeb && Platform.isWindows) {
     await GoogleSignInDart.register(
-      clientId:
-          '406099696497-g5o9l0blii9970bgmfcfv14pioj90djd.apps.googleusercontent.com',
+      clientId: '406099696497-g5o9l0blii9970bgmfcfv14pioj90djd.apps.googleusercontent.com',
     );
   }
 
@@ -85,9 +83,7 @@ class AuthExampleApp extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: constraints.maxWidth >= 1200
-                      ? constraints.maxWidth / 2
-                      : constraints.maxWidth,
+                  width: constraints.maxWidth >= 1200 ? constraints.maxWidth / 2 : constraints.maxWidth,
                   child: StreamBuilder<User?>(
                     stream: auth.authStateChanges(),
                     builder: (context, snapshot) {
